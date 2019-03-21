@@ -3,10 +3,110 @@
   width: 1100px;
   .search-box {
   float: left;
-  width: 300px;
-  height: 800px;
-  background: white;
   margin-right: 50px;
+  .select-default{
+    background-color: #fff;
+    width: 300px;
+  }
+  &__detail-search{
+    width: 300px;
+    margin: 20px 0 0 0;
+    padding: 16px;
+    background-color: #fff;
+    &__title{
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &__form-group{
+      margin: 40px 0 0;
+      &__input{
+        height: 48px;
+        margin: 8px 0 0 0;
+        padding: 10px 16px 8px;
+        width: 100%;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: #fff;
+        line-height: 1.5;
+        font-size: 16px;
+      }
+      &__label{
+        font-size: 16px;
+      }
+      &--box{
+        position: relative;
+        margin: 40px 0 0;
+      }
+      &__price-box{
+        position: relative;
+      }
+      &__price-min{
+        float: left;
+        width: 45%;
+      }
+      &__price-between{
+        float: left;
+        width: 10%;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        margin: 8px 0 0 0;
+        font-weight: bold;
+      }
+      &__price-max{
+        position: absolute;
+        right: 0;
+        float: left;
+        width: 45%;
+
+      }
+      &__checkbox{
+        margin: 8px 0 0 0;
+        height: 48px;
+        line-height: 48px;
+        width: 100%;
+        font-size: 16px;
+      }
+      &__status-checkbox{
+        float: left;
+        width: 10%;
+        height: 48px;
+        line-height: 48px;
+        font-size: 16px;
+      }
+      &__status-name{
+        float: left;
+        width: 90%;
+        height: 48px;
+        line-height: 48px;
+        font-size: 16px;
+      }
+      &__clear{
+        float: left;
+        background: #aaa;
+        border: 1px solid #aaa;
+        color: #fff;
+        display: block;
+        width: 45%;
+        line-height: 48px;
+        font-size: 14px;
+        text-align: center;
+      }
+      &__search{
+        position: absolute;
+        right: 0;
+        float: left;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        display: block;
+        width: 45%;
+        line-height: 48px;
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+  }
   }
 }
 

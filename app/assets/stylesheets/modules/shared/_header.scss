@@ -18,14 +18,15 @@
     width: calc(100% - (134px + 16px));
     margin: 0;
     padding: 0;
-    i {
+    &--btn {
       position: absolute;
       top: 0;
-      right: 0;
-      width: 36px;
-      line-height: 36px;
+      right: 6px;
+      margin-top: 10px;
       cursor: pointer;
       text-align: center;
+      font-size: 13px;
+      border-style: none;
     }
   }
   &__navbox {

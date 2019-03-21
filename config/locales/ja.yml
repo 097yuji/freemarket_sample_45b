@@ -205,3 +205,10 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  enums:
+    product:
+      status:
+        published: 出品中
+        stopped: 出品停止中
+        trading: 取引中
+        sold: 売り切れ

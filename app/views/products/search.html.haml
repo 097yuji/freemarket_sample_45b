@@ -4,21 +4,91 @@
 
   %section.search-result-container.clearfix
     %div.search-box
+      = sort_link(@search, :price, "価格")
+      = sort_link(@search, :created_at, "新着順")
+      .search-box__detail-search
+        %h1.search-box__detail-search__title
+          詳細検索
+        = search_form_for @search, url: search_products_path do |f|
+          .search-box__detail-search__form-group
+            = f.label :name_or_description_cont, class: "search-box__detail-search__form-group__label" do
+              = fa_icon "plus", text: "キーワードを追加する"
+            = f.search_field :name_or_description_cont, class: "search-box__detail-search__form-group__input"
+          .search-box__detail-search__form-group
+            = f.label :name_or_description_cont, class: "search-box__detail-search__form-group__label" do
+              = fa_icon "list", text: "カテゴリーを選択する"
+            = f.search_field :name_or_description_cont, class: "search-box__detail-search__form-group__input"
+          .search-box__detail-search__form-group
+            = f.label :brand_cont, class: "search-box__detail-search__form-group__label" do
+              = fa_icon "tag", text: "ブランド名から探す"
+            = f.search_field :brand_name_cont, class: "search-box__detail-search__form-group__input"
+          .search-box__detail-search__form-group
+            = f.label :size_id_eq, class: "search-box__detail-search__form-group__label" do
+              = fa_icon "square-o", text: "サイズを指定する"
+            = f.collection_select :product_size_id_eq, ProductSize.all, :id, :size, { include_blank: 'すべて'}, { class: "search-box__detail-search__form-group__input" }
+          .search-box__detail-search__form-group
+            = f.label :Price, class: "search-box__detail-search__form-group__label" do
+              = fa_icon "yen", text: "価格"
+            .search-box__detail-search__form-group__price-box.clearfix
+              = f.number_field :price_gteq, placeholder: "￥ Min", class: "search-box__detail-search__form-group__price-min search-box__detail-search__form-group__input"
+              .search-box__detail-search__form-group__price-between
+                〜
+              = f.number_field :price_lteq, placeholder: "￥ Max", class: "search-box__detail-search__form-group__price-max search-box__detail-search__form-group__input"
+          .search-box__detail-search__form-group
+            = f.label :condition_in, class: "search-box__detail-search__form-group__label" do
+              = fa_icon "star", text: "商品の状態"
+            = f.collection_check_boxes :condition_in, Product.conditions, :last, :first do |b|
+              = b.label class: "search-box__detail-search__form-group__checkbox" do
+                = b.check_box
+                = b.text
+          .search-box__detail-search__form-group
+            = f.label :shipping_burden_in, class: "search-box__detail-search__form-group__label" do
+              = fa_icon "car", text: "配送料の負担"
+            = f.collection_check_boxes :shipping_burden_in, Product.shipping_burdens, :last, :first do |b|
+              = b.label class: "search-box__detail-search__form-group__checkbox" do
+                = b.check_box
+                = b.text
+          .search-box__detail-search__form-group
+            = f.label :name_or_description_cont, class: "search-box__detail-search__form-group__label" do
+              = fa_icon "shopping-basket", text: "販売状況"
+            .clearfix
+              = f.check_box :status_eq, { class: "search-box__detail-search__form-group__status-checkbox" } , checked_value = 0, unchecked_value = ""
+              .search-box__detail-search__form-group__status-name
+                出品中
+            .clearfix
+              = f.check_box :status_eq, { class: "search-box__detail-search__form-group__status-checkbox" }, checked_value = 3, unchecked_value = ""
+              .search-box__detail-search__form-group__status-name
+                売り切れ
+          .search-box__detail-search__form-group--box.clearfix
+            %button.search-box__detail-search__form-group__clear
+              クリア
+            = f.submit '検索', class: "search-box__detail-search__form-group__search"
     %div.search-result.clearfix
-      %h1.search-result__title 検索結果#{@products.length}件
-      - @products.each do |item|
-        %div.search-result__item-box
-          = link_to "/products/1", class: "search-result-image" do
-            = image_tag item.product_images.first.image ,class: "search-result-image"
-          .search-result__item-box--body
-            %h3.search-result__item-box--body-name
-              = item.name
-            %h3.search-result__item-box--body-price
-              ¥
-              = number_with_delimiter("#{item.price}")
-            .item-details__tax
-              (税込み)
-
+      - if @products
+        - if @products.length > 0
+          %h1.search-result__title 検索結果#{@products.length}件
+          - @products.each do |product|
+            %div.search-result__item-box
+              = link_to product_path(product), class: "search-result-image" do
+                = image_tag product.product_images.first.image ,class: "search-result-image"
+              .search-result__item-box--body
+                %h3.search-result__item-box--body-name
+                  = product.name
+                %h3.search-result__item-box--body-price
+                  ¥
+                  = number_with_delimiter("#{product.price}")
+                .item-details__tax
+                  (税込み)
+        - else
+          %h1.search-result__title
+            検索結果 0件
+          %p.search-result__info
+            該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
+      - else
+        %h1.search-result__title
+          検索結果 0件
+        %p.search-result__info
+          該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
 
   = render 'shared/appbanner'
 

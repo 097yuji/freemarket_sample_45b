@@ -33,7 +33,12 @@ before_action :set_product, only: [:edit, :update, :destroy, :stop, :start]
 
 #商品検索機能
   def search
-    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+    if params[:keyword] != ""
+      @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+    end
+    @search = Product.ransack(params[:q])
+    @products = @search.result
+    @search.build_sort if @search.sorts.empty?
   end
 
 #商品出品ページ
