@@ -10,6 +10,24 @@ crumb :users do
   parent :root
 end
 
+# users#published
+crumb :published_user do
+  link "出品した商品 - 出品中", published_user_path
+  parent :users
+end
+
+# users#trading
+crumb :trading_user do
+  link "出品した商品 - 取引中", trading_user_path
+  parent :users
+end
+
+# users#sold
+crumb :sold_user do
+  link "出品した商品 - 売却済み", sold_user_path
+  parent :users
+end
+
 # users#edit
 crumb :edit_user do
   link "プロフィール", edit_user_path
