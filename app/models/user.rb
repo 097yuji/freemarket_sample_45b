@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :products
   has_one :credit_cards
+  has_many :purchases
+  has_many :products, through: :purchases
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable, :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 

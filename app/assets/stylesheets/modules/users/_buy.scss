@@ -1,0 +1,73 @@
+.users-products-buy-tabs-main{
+  .mypage-buy-status-columns{
+    width: 100%;
+    display: flex;
+    &__column{
+      width: 50%;
+      height: 74px;
+      color: #333;
+      font-size: 16px;
+      line-height: 72px;
+      background: #eee;
+      text-align: center;
+      &--active{
+        background: #fff;
+        border-top: 2px solid #ea352d;
+        font-weight: bold;
+        width: 50%;
+      }
+    }
+  }
+  .publised-products{
+    background-color: #fff;
+    width: 100%;
+    &__product{
+      height: 83px;
+      padding: 16px;
+    }
+    .publised-products-product{
+      position: relative;
+      &__image{
+        display: block;
+        height: 48px;
+        width: 48px;
+      }
+      &__title{
+        position: absolute;
+        font-size: 16px;
+        left: 80px;
+        top: 16px
+      }
+      &__info{
+        position: absolute;
+        left: 90px;
+        top: 40px;
+      }
+      .publised-products-product-info{
+        &__like{
+          float: left;
+          color: #ccc;
+          font-weight: bold;
+          padding: 2px;
+          font-size: 16px;
+        }
+        &__comment{
+          float: left;
+          color: #ccc;
+          font-weight: bold;
+          padding: 2px;
+          font-size: 16px;
+        }
+        &__badge{
+          float: left;
+          margin: 0 0 0 10px;
+          border-radius: 2px;
+          font-size: 12px;
+          background-color: #ea352d;
+          color: #fff;
+          padding: 3px;
+        }
+      }
+    }
+  }
+}

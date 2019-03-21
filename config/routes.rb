@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       get 'published'
       get 'trading'
       get 'sold'
+      get 'buy'
+      get 'bought'
     end
     collection do
       get 'signout'

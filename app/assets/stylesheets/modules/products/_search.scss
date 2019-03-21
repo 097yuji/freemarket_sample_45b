@@ -136,5 +136,8 @@
   .search-result-image {
     width: 160px;
     height: 160px;
+    display: block;
+    object-fit: cover;
+    transform: none;
   }
 }

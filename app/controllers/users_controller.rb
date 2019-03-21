@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: :new
-  before_action :set_user, only: [:edit, :update, :published, :trading, :sold]
+  before_action :set_user, only: [:edit, :update, :published, :trading, :sold, :buy, :bought]
   def new
   end
 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.id == current_user.id
       @user.update(user_params)
     end
-    redirect_to :action => "edit"
+    redirect_to action: :edit
   end
 
   def signout
@@ -35,6 +35,15 @@ class UsersController < ApplicationController
 
   def sold
     @products = @user.products.sold
+  end
+
+  def buy 
+    @products = @user.products.trading
+  end
+
+  def bought
+    products_number = @user.purchases[0].product_id
+    @products = Product.find(products_number)
   end
 
   private

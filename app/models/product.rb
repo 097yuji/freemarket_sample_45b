@@ -7,6 +7,8 @@ class Product < ApplicationRecord
   has_many :product_images, dependent: :delete_all
   accepts_nested_attributes_for :product_images, reject_if: :reject_image_no_change, allow_destroy: true, limit: 10
   belongs_to :category
+  has_many :purchases
+  has_many :users, through: :purchases
 
   enum condition:       {"新品、未使用": 0, "未使用に近い": 1, "目立った傷や汚れなし": 2, "やや傷や汚れあり": 3, "傷や汚れあり": 4, "全体的に状態が悪い": 5}
 

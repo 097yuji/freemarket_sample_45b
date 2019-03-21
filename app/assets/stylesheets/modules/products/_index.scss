@@ -155,6 +155,8 @@
       width: 220px;
       height: 213px;
       display: block;
+      object-fit: cover;
+      transform: none;
     }
     &__body{
       width: 220px;

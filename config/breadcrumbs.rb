@@ -28,7 +28,19 @@ crumb :sold_user do
   parent :users
 end
 
-# users#edit
+# users#buy
+crumb :buy_user do
+  link "購入した商品 - 取引中"
+  parent :users, buy_user_path
+end
+
+# users#bought
+crumb :bought_user do
+  link "購入した商品 - 過去の取引"
+  parent :users, bought_user_path
+end
+
+  # users#edit
 crumb :edit_user do
   link "プロフィール", edit_user_path
   parent :users
