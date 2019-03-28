@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190314111947) do
+ActiveRecord::Schema.define(version: 20190327084055) do
 
   create_table "adresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "zip_code",   null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20190314111947) do
     t.string  "name",             null: false
     t.integer "main_category_id"
     t.integer "sub_category_id"
+    t.string  "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
     t.index ["main_category_id"], name: "index_categories_on_main_category_id", using: :btree
     t.index ["sub_category_id"], name: "index_categories_on_sub_category_id", using: :btree
   end

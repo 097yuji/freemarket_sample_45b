@@ -40,20 +40,20 @@
           %th.item-detail-table__record--key
             カテゴリー
           %td.item-detail-table__record--value
-            = link_to @product.category.name, "", { class: "table-link" }
-            = link_to "", {class: "table-link"} do
-              = fa_icon "angle-right lg"
-              = @product.category.main_category.name
-            = link_to "", {class: "table-link"} do
+            = link_to @product.category.main_category.name, category_path(@product.category.main_category.id), { class: "table-link" }
+            = link_to category_path(@product.category.sub_category.id), {class: "table-link"} do
               = fa_icon "angle-right lg"
               = @product.category.sub_category.name
+            = link_to category_path(@product.category.id), {class: "table-link"} do
+              = fa_icon "angle-right lg"
+              = @product.category.name
 
         %tr.item-detail-table__record
           %th.item-detail-table__record--key
             ブランド
           %td.item-detail-table__record--value
             - if !@product.brand_id.nil?
-              = link_to @product.brand.name, "", { class: "table-link" }
+              = link_to @product.brand.name, brand_path(@product.brand.id), { class: "table-link" }
         %tr.item-detail-table__record
           %th.item-detail-table__record--key
             商品のサイズ

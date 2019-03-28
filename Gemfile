@@ -76,6 +76,7 @@ gem 'gretel'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'ransack'
 gem 'enum_help'
+gem 'ancestry'
 
 group :production do
   gem 'unicorn'
